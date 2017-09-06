@@ -1,0 +1,28 @@
+.header-wrapper {
+    max-width: 960px;
+    width: 100%;
+    margin: 0 auto;
+    border: 1px solid; /*zmień to później*/
+}
+
+.header-wrapper:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.main-header {
+    float: left;
+}
+
+.main-nav {
+    float: right;
+   }
+
+.main-nav li {
+     display: inline-block; 
+    }
+
+.main-header h1 {
+
+}
