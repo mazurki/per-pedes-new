@@ -1,6 +1,13 @@
 .page-header {
     height: 60px;
-    position: relative;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: white;
+}
+
+.header-placeholder {
+    height: 60px;
 }
 
 .header-wrapper {
