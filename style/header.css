@@ -1,8 +1,12 @@
+.page-header {
+    height: 60px;
+    position: relative;
+}
+
 .header-wrapper {
     max-width: 960px;
     width: 100%;
     margin: 0 auto;
-    border: 1px solid; /*zmień to później*/
 }
 
 .header-wrapper:after {
@@ -21,8 +25,33 @@
 
 .main-nav li {
      display: inline-block; 
+     font-size: 16px;
+     text-align: center;
+     height: 100%;
     }
 
 .main-header h1 {
+    font-family: museo500;
+    display: table-cell;
+    height: 60px;
+    vertical-align: middle;
+    padding: 0 0 0 10px;
+}
 
+.main-nav a {
+    color: black;
+    text-decoration: none;
+    display: table-cell;
+    height: 60px;
+    padding: 0 20px 0 20px;
+    vertical-align: middle;
+}
+
+.main-nav a:link  {
+    color: #000000;
+}
+
+.main-nav a:hover {
+    color: white;
+    background: green;
 }
