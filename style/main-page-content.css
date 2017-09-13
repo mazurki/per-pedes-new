@@ -2,4 +2,26 @@
     width: 600px;
     border: 1px solid;
     margin: auto;
+    overflow: hidden;
+}
+
+.padding-contener {
+    padding: 30px;
+}
+
+.main-page-content .image-contener,
+.main-page-content .text-contener {
+width: 50%;
+float: left;
+text-align: left;
+}
+
+.main-page-content .image-contener img {
+    width: 100%;
+}
+
+.main-page-content section:nth-child(2n) .image-contener,
+.main-page-content section:nth-child(2n) .text-contener {
+float: right;
+text-align: right;
 }
