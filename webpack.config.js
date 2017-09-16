@@ -1,16 +1,25 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+// Narzędzia do manipulowania ścieżkami do plików
 const path = require('path');
 
+// Plugin budujący pliki HTML
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+// Plugin zapisujący dane jako oddzielne pliki
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+// Plugin czyszczący katalog `dist` przed budową paczki
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+// Instancja ExtractTextPlugin odpowiedzialna za stworzenie
+// pliku CSS
 const extractSCSS = new ExtractTextPlugin("styles.css");
 
-
+// Katalog z plikami źródłowymi
 const SOURCE_DIR = path.join(__dirname, '/src');
+// Katalog z gotową stroną
 const DIST_DIR = path.join(__dirname, '/dist');
+// Główny plik JavaScript (w nim MUSI być import pliku SCSS)!
 const MAIN_JS_FILE = path.join(SOURCE_DIR, 'scripts/app.js');
 
+// list pluginów
 let plugins = [];
 
 plugins.push(new HtmlWebpackPlugin({
@@ -18,18 +27,24 @@ plugins.push(new HtmlWebpackPlugin({
     template: path.join(SOURCE_DIR, 'index.hbs')
 }));
 
+// Zapisanie pliku CSS
 plugins.push(extractSCSS);
+// Wyczyść katalog 'dist' przed budową paczki
 plugins.push(new CleanWebpackPlugin(DIST_DIR));
 
 module.exports = {
+    // Główny plik JS jest punktem wejścia dla WebPacka
+    entry: MAIN_JS_FILE,
+
+    // Katalog z gotową paczką
     output: {
         path: DIST_DIR,
         filename: 'scripts/main.js'
     },
-    entry: MAIN_JS_FILE,
 
     module: {
         rules: [
+            // Obsługa plików szablonów HandlebarsJS
             {
                 test: /\.hbs/,
                 use: {
@@ -39,6 +54,8 @@ module.exports = {
                     }
                 }
             },
+
+            // Obsługa plików SCSS i CSS
             {
                 test: /\.s?css$/,
                 use: extractSCSS.extract([
@@ -49,8 +66,12 @@ module.exports = {
                     }
                 ])
             },
+
+            // Obsługa fontów
             {
                 test: /\.(eot|svg|ttf|woff|woff2)$/,
+                // Ponieważ pliki SVG mogą być fontami i obrazkami
+                // ignorujemy pliki w katalogi `img`
                 exclude: [/img/],
                 use: {
                     loader: 'file-loader',
@@ -60,9 +81,13 @@ module.exports = {
                     }
                 }
             },
+
+            // Obsługa obrazków
             {
                 test: /\.(jpg|png|gif|svg)$/,
                 exclude: [/fonts/],
+                // Ponieważ pliki SVG mogą być fontami i obrazkami
+                // ignorujemy pliki w katalogi `fonts`
                 use: {
                     loader: 'file-loader',
                     options: {
