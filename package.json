@@ -1,0 +1,29 @@
+{
+  "name": "per-pedes-new",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mazurki/per-pedes-new.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mazurki/per-pedes-new/issues"
+  },
+  "homepage": "https://github.com/mazurki/per-pedes-new#readme",
+  "dependencies": {
+    "clean-webpack-plugin": "^0.1.16",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^0.11.2",
+    "html-webpack-plugin": "^2.30.1",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.6",
+    "webpack": "^3.6.0"
+  }
+}
