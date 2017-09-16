@@ -4,54 +4,29 @@
     </head>
     <body>
         {{> partials/header.hbs}}
-        <div class="header-placeholder">
             </div>
         <div class="photo-back">
-            <div class="photo-wrapper">Tu będzie zdjęcie</div>
+            <div class="photo-wrapper">
+                <img src="./img/pagon-ho.svg" alt="">
+                Tu będzie zdjęcie
+            </div>
         </div>
         <div class="main-page-content">
-            <section>
-                <div class="image-contener">
-                    <div class="padding-contener">
-                        <img src="http://lorempixel.com/300/300" alt="">
-                    </div>
-                </div>
-                <div class="text-contener">
-                    <div class="padding-contener">
-                        <h2>kfsfhbakbn akdjvhndk 2</h2>
-                        <p> dbkwbgkgjvsmskjvskv</p>
-                        <p> dbkwbgkgjvsmskjvskv</p>
-                    </div>
-                </div>
-            </section>
-            <section>
-                <div class="image-contener">
-                    <div class="padding-contener">
-                        <img src="http://lorempixel.com/300/300" alt="">
-                    </div>
-                </div>
-                <div class="text-contener">
-                    <div class="padding-contener">
-                        <h2>kfsfhbakbn akdjvhndk</h2>
-                        <p> dbkwbgkgjvsmskjvskv</p>
-                        <p> dbkwbgkgjvsmskjvskv</p>
-                    </div>
-                </div>
-            </section>
-            <section>
-                <div class="image-contener">
-                    <div class="padding-contener">
-                        <img src="http://lorempixel.com/300/300" alt="">
-                    </div>
-                </div>
-                <div class="text-contener">
-                    <div class="padding-contener">
-                        <h2>kfsfhbakbn akdjvhndk</h2>
-                        <p> dbkwbgkgjvsmskjvskv</p>
-                        <p> dbkwbgkgjvsmskjvskv</p>
-                    </div>
-                </div>
-            </section>
+            {{#> partials/home/content-box.hbs image="http://lorempixel.com/300/300" }}
+                <h2>kfsfhba kbn akdjvhndk 1</h2>
+                <p> dbkwbgkgjvsmskjvskv</p>
+                <p> dbkwbgkgjvsmskjvskv</p>
+            {{/ partials/home/content-box.hbs}}
+            {{#> partials/home/content-box.hbs image="http://lorempixel.com/300/300" }}
+                <h2>kfsfhba kbn akdjvhndk 2</h2>
+                <p> dbkwbgkgjvsmskjvskv</p>
+                <p> dbkwbgkgjvsmskjvskv</p>
+            {{/ partials/home/content-box.hbs}}
+            {{#> partials/home/content-box.hbs image="http://lorempixel.com/300/300" }}
+                <h2>kfsfhba kbn akdjvhndk 3</h2>
+                <p> dbkwbgkgjvsmskjvskv</p>
+                <p> dbkwbgkgjvsmskjvskv</p>
+            {{/ partials/home/content-box.hbs}}
         </div>
         <footer>
             <nav class="footer-nav">
@@ -68,8 +43,5 @@
                     </ul>
                 </nav>
         </footer>
-        <img src="./img/pagon-ho.svg" alt="">
-        <img src="./img/pagon-hr.svg" alt="">
-
     </body>
 </html>
