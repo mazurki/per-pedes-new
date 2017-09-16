@@ -4,7 +4,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
-const extractSCSS = new ExtractTextPlugin("css/styles.css");
+const extractSCSS = new ExtractTextPlugin("styles.css");
 
 
 const SOURCE_DIR = path.join(__dirname, '/src');
@@ -15,7 +15,7 @@ let plugins = [];
 
 plugins.push(new HtmlWebpackPlugin({
     filename: 'index.html',
-    template: path.join(SOURCE_DIR, 'index.html')
+    template: path.join(SOURCE_DIR, 'index.hbs')
 }));
 
 plugins.push(extractSCSS);
@@ -30,6 +30,15 @@ module.exports = {
 
     module: {
         rules: [
+            {
+                test: /\.hbs/,
+                use: {
+                    loader: "handlebars-loader",
+                    query: {
+                        inlineRequires: '/img/'
+                    }
+                }
+            },
             {
                 test: /\.s?css$/,
                 use: extractSCSS.extract([
@@ -47,7 +56,7 @@ module.exports = {
                     loader: 'file-loader',
                     options: {
                         name: '[name].[ext]?[hash]',
-                        outputPath: 'fonts/'
+                        outputPath: 'fonts/',
                     }
                 }
             },
@@ -58,7 +67,7 @@ module.exports = {
                     loader: 'file-loader',
                     options: {
                         name: '[name].[ext]?[hash]',
-                        useRelativePath: true
+                        outputPath: 'img/',
                     }
                 }
             }
