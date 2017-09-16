@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 let plugins = [];
 
@@ -36,6 +37,14 @@ module.exports = {
                     loader: 'file-loader',
                     options: {
                         name: '[path][name].[ext]'
+                    }
+                }
+            },{
+                test: /\.(jpg|png|gif)$/,
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        name: '[path][name].[ext]?[hash]'
                     }
                 }
             }
