@@ -17,7 +17,7 @@ module.exports = {
         path: __dirname + '/dist',
         filename: 'main.js'
     },
-    entry: __dirname + '/scripts/app.js',
+    entry: __dirname + '/assets/scripts/app.js',
 
     module: {
         rules: [
