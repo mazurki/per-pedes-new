@@ -1,5 +1,7 @@
 // Narzędzia do manipulowania ścieżkami do plików
 const path = require('path');
+// Narzędzia dostępu do plików na dysku
+const fs = require('fs');
 
 // Plugin budujący pliki HTML
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -22,10 +24,15 @@ const MAIN_JS_FILE = path.join(SOURCE_DIR, 'scripts/app.js');
 // list pluginów
 let plugins = [];
 
-plugins.push(new HtmlWebpackPlugin({
-    filename: 'index.html',
-    template: path.join(SOURCE_DIR, 'index.hbs')
-}));
+let pages = findPagesFiles();
+
+pages.forEach((pageName) => {
+    plugins.push(new HtmlWebpackPlugin({
+        filename: `${pageName}.html`,
+        template: path.join(SOURCE_DIR, `${pageName}.hbs`)
+    }));
+});
+
 
 // Zapisanie pliku CSS
 plugins.push(extractSCSS);
@@ -101,4 +108,24 @@ module.exports = {
     },
 
     plugins
+}
+
+function findPagesFiles(dir = SOURCE_DIR) {
+    let result = [];
+
+    let list = fs.readdirSync(dir);
+
+    list.forEach(f => {
+        file = path.join(dir, f);
+        let stat = fs.statSync(file);
+
+        if (stat && !stat.isDirectory() && /\.hbs$/.test(f)) {
+            console.log(f)
+            result.push(/(.*)\.hbs$/.exec(f)[1]);
+        }
+    });
+
+    console.log(result);
+
+    return result;
 }
