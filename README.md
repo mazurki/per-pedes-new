@@ -31,12 +31,28 @@ npm i
 
 ### Pliki i katalogi
 
-* `/src` - główny katalog z plikami strony
-  * `/fonts` - katalog na pliki fontów
-  * `/img` - katalog na grafiki
+* `src/` - główny katalog z plikami strony
+  * `fonts/` - katalog na pliki fontów
+  * `img/` - katalog na grafiki
   * `/scss` - katalog na pliki stylów SCSS
-  * `/scripts` - katalog na pliki JavaScript
-* `/dist` - katalog z plikami strony gotowymi do publikacji
+    * `main.scss` - główny plik styli **nie kasować**
+  * `scripts/` - katalog na pliki JavaScript
+    * `app.js` - główny plik JavaScript **nie kasować!**
+  * `partials/` - katalog z częściowymi szablonami stron (do wielokrotnego użycia)
+  * `*.hbs` - każdy plik tego typu odpowiada jednej podstronie
+* `dist/` - katalog z plikami strony gotowymi do publikacji
+* `webpack.config.js` - plik konfiguracyjny Webpack`a
 
+### Komendy
 
+```
+npm run server
+```
 
+Uruchamia lokalny serwer developerski pod adresem http://localhost:8080
+
+```
+npm run build
+```
+
+Generuje pliki produkcyjne strony w katalogu `/dist`

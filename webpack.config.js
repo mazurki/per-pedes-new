@@ -10,8 +10,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 // Plugin czyszczący katalog `dist` przed budową paczki
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-// Instancja ExtractTextPlugin odpowiedzialna za stworzenie
-// pliku CSS
+// Instancja ExtractTextPlugin odpowiedzialna za stworzenie pliku CSS
 const extractSCSS = new ExtractTextPlugin("styles.css");
 
 // Katalog z plikami źródłowymi
@@ -110,6 +109,9 @@ module.exports = {
     plugins
 }
 
+/**
+ * Funkcja zwracająca nazwy wszystkich plików `*.hbs` z katalogu `/src`
+ */
 function findPagesFiles(dir = SOURCE_DIR) {
     let result = [];
 
@@ -120,12 +122,9 @@ function findPagesFiles(dir = SOURCE_DIR) {
         let stat = fs.statSync(file);
 
         if (stat && !stat.isDirectory() && /\.hbs$/.test(f)) {
-            console.log(f)
             result.push(/(.*)\.hbs$/.exec(f)[1]);
         }
     });
-
-    console.log(result);
 
     return result;
 }
